@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yang2019.springboot.t0321.dao.T0321Dao">
+
+	<resultMap id="BaseResultMap"
+		type="com.yang2019.springboot.t0321.model.domain.T0321DO">
+		<result column="sno" property="sno" jdbcType="VARCHAR" />
+		<result column="name" property="sname" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="addtm" property="addTm" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		sno, name, age, sex,addtm
+	</sql>
+
+	<select id="listCustomer" parameterType="com.yang2019.springboot.t0321.model.domain.T0321DO"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tbl_customer where 1=1 
+		<if test="sno != null">
+			and sno = #{sno,jdbcType=VARCHAR}
+		</if>
+		<if test="sname != null">
+			and sname = #{sname,jdbcType=VARCHAR}
+		</if>
+		<if test="addTm != null">
+			and addTm = #{addTm,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+</mapper>

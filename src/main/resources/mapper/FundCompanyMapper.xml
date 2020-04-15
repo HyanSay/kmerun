@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yang2019.springboot.fundcompany.dao.FundCompanyDao">
+	<resultMap id="BaseResultMap"
+		type="com.yang2019.springboot.fundcompany.model.FundCompanyPO">
+		<id column="fundcompanyid" property="fundCompanyId" jdbcType="VARCHAR" />
+		<result column="fundcompanycode" property="fundCompanyCode"
+			jdbcType="VARCHAR" />
+		<result column="fundcompanyname" property="fundCompanyName"
+			jdbcType="VARCHAR" />
+		<result column="fundcompanytype" property="fundCompanyType"
+			jdbcType="VARCHAR" />
+		<result column="fundcompanystatus" property="fundCompanyStatus"
+			jdbcType="VARCHAR" />
+		<result column="addtime" property="addTime" jdbcType="TIMESTAMP" />
+		<result column="updatetime" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		fundcompanyid, fundcompanyname, fundcompanytype,
+		fundcompanystatus, addtime,
+		updatetime
+	</sql>
+	<insert id="insertFundCompany"
+		parameterType="com.yang2019.springboot.fundcompany.model.FundCompanyPO">
+		insert into fundcompany
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fundCompanyId != null">
+				fundcompanyid,
+			</if>
+			<if test="fundCompanyCode != null">
+				fundcompanycode,
+			</if>
+			<if test="fundCompanyName != null">
+				fundcompanyname,
+			</if>
+			<if test="fundCompanyType != null">
+				fundcompanytype,
+			</if>
+			<if test="fundCompanyStatus != null">
+				fundcompanystatus,
+			</if>
+			<if test="addTime != null">
+				addtime,
+			</if>
+			<if test="updateTime != null">
+				updatetime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fundCompanyId != null">
+				#{fundCompanyId,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyCode != null">
+				#{fundCompanyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyName != null">
+				#{fundCompanyName,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyType != null">
+				#{fundCompanyType,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyStatus != null">
+				#{fundCompanyStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateFundCompanyByFundCompanyId"
+		parameterType="com.yang2019.springboot.fundcompany.model.FundCompanyPO">
+		update fundcompany
+		<set>
+			<if test="fundCompanyCode != null">
+				fundcompanycode = #{fundCompanyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyName != null">
+				fundcompanyname = #{fundCompanyName,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyType != null">
+				fundcompanytype = #{fundCompanyType,jdbcType=VARCHAR},
+			</if>
+			<if test="fundCompanyStatus != null">
+				fundcompanystatus =
+				#{fundCompanyStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				updatetime = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where fundcompanyid = #{fundCompanyId,jdbcType=VARCHAR}
+	</update>
+
+	<delete id="deleteFundCompanyByFundCompanyId" parameterType="java.lang.String">
+		delete from fundcompany
+		where fundcompanyid =
+		#{dFundCompanyId,jdbcType=VARCHAR}
+	</delete>
+
+	<select id="getFundCompanyByFundCompanyId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fundcompany
+		where fundcompanyid = #{dFundCompanyId,jdbcType=VARCHAR}
+	</select>
+</mapper>

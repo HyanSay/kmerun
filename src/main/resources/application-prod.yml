@@ -1,0 +1,28 @@
+server:
+  port: 10791
+  connection-timeout: 10000 
+  tomcat:
+    max-connections: 248
+    max-threads: 248
+    min-spare-threads: 32
+
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          username: root
+          password: root
+          url: jdbc:mysql://localhost/master?characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8
+          driver-class-name: com.mysql.jdbc.Driver
+        slave:
+          username: root
+          password: root
+          url: jdbc:mysql://localhost/slave?characterEncoding=utf-8&useSSL=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8
+          driver-class-name: com.mysql.jdbc.Driver
+
+book: 
+  name: Spring Boot2 实战之旅
+  author: SpringBoot2
+  rValue: ${random.value}
+  rUuid: ${random.uuid}

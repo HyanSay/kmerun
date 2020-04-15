@@ -1,0 +1,49 @@
+server:
+  port: 10791
+  connection-timeout: 10000 
+  tomcat:
+    max-connections: 248
+    max-threads: 248
+    min-spare-threads: 32
+
+spring:  
+  datasource:
+    slave:
+      url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: root
+      password: 123456
+      filters: mergeStat
+      on-off: true
+      driver-class-name: com.mysql.jdbc.Driver
+    master:
+      url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: root
+      password: 123456
+      filters: mergeStat
+      driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  mapper-locations: classpath*:com/example/demo/**/mapping/*.xml
+  typeAliasesPackage: com.example.demo.entity 
+  typeHandlersPackage: com.example.demo.entity.config
+  global-config:
+    id-type: 3
+    db-column-underline: false
+    refresh-mapper: true
+    is-capital-mode: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    lazyLoadingEnabled: true
+    jdbcTypeForNull: null
+    multipleResultSetsEnabled: true
+
+mybatis:
+#  type-aliases-package: com.bocins.springcloud.model	#type-aliases-package
+  mapper-locations: classpath:mapper/*.xml
+
+book: 
+  name: Spring Boot2 实战之旅        
+  author: SpringBoot2
+  rValue: ${random.value}
+  rUuid: ${random.uuid}
