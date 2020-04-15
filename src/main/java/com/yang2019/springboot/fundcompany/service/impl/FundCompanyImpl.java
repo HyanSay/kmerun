@@ -60,4 +60,10 @@ public class FundCompanyImpl implements FundCompanyService {
 		return resJson;
 	}
 
+	@Override
+	public String getFundCompany(String fundCompanyJson) {
+		logger.info("查询基金公司，信息为：" + fundCompanyJson);
+		return null;
+	}
+
 }

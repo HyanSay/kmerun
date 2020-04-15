@@ -17,4 +17,12 @@ public interface FundCompanyService {
 	 * @return
 	 */
 	public String updateFundCompany(String fundCompanyJson);
+	
+	/**
+	 * 查询基金公司
+	 * 
+	 * @param fundCompanyJson
+	 * @return
+	 */
+	public String getFundCompany(String fundCompanyJson);
 }

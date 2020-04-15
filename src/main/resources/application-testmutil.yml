@@ -39,7 +39,6 @@ mybatis-plus:
     multipleResultSetsEnabled: true
 
 mybatis:
-#  type-aliases-package: com.bocins.springcloud.model	#type-aliases-package
   mapper-locations: classpath:mapper/*.xml
 
 book: 

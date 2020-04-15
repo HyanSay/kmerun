@@ -46,4 +46,19 @@ public class FundCompanyController {
 		String res = fundCompanyService.updateFundCompany(fundCompanyVOJson);
 		return res;
 	}
+	
+	/**
+	 * 查询基金公司
+	 * 
+	 * @param
+	 * @return
+	 */
+	@GetMapping("/getFundCompany")
+	private String getFundCompany(String reqfundCompanyJson) {
+		logger.info("查询基金公司信息--------getFundCompany------");
+		RequestFundCompanyVO requestFundCompanyVO = JsonUtils.json2Obj(reqfundCompanyJson, RequestFundCompanyVO.class);
+		String fundCompanyVOJson = JsonUtils.obj2Json(requestFundCompanyVO.getFundCompanyVO());
+		String res = fundCompanyService.getFundCompany(fundCompanyVOJson);
+		return res;
+	}
 }
