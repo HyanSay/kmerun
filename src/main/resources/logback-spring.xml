@@ -55,7 +55,7 @@
 	<logger name="java.sql.PreparedStatement" level="DEBUG" />
 	<logger name="com.apache.ibatis" level="TRACE" />
 
-	<logger name="com.yang2019.springboot" level="INFO" additivity="false">
+	<logger name="com.kmerun" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</logger>
